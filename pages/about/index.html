@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,7 +32,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a href="https://manuciao10.github.io/" class="navbar-brand">
-                <img src="favicon.ico" width="32" height="32"/>
+                <img src="https://manuciao10.github.io/img/favicon.ico" width="32" height="32"/>
                 Manuciao's website            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -64,33 +63,43 @@
 
 <div class="container">
     <div class="row">
-        <article>
-            <h1><a href="https://manuciao10.github.io">Deobfuscation Akamai Bot Manager 2.0</a>
-            </h1>
-
-            <span class="published">
-                <i class="fa fa-calendar"></i>
-                <time> February 22, 2024 at 18:24</time>
-            </span>
-            <br/><br/>
+        <section id="content" class="body">
+            <h1 class="entry-title"></h1>
 
             <div class="entry-content">
-                <p>This post is about to analyze the akamai javascript obfuscated file, using the developer tools to debug the code.<br>
-                We will then use Golang to create a cookies generator to bypass the bot manager.<br>
+                <p>Hello, and welcome to my website.
+                You can find my projects <a href="https://github.com/ManuCiao10">here</a>.</p>
 
-                To have a better understanding of akamai bot manager, you can read <a href="https://www.blackhat.com/docs/eu-17/materials/eu-17-Shuster-Passive-Fingerprinting-Of-HTTP2-Clients-wp.pdf">here.</a></p>
+                <div class="section" id="contact">
+                    <h2>Contact</h2>
+                    <p>For questions and comments, please send me <a class="reference external" href="mailto:emanuele.ardinghi&#64;gmail.com">an email</a>.
+                        Once in a while I post <a class="reference external" href="https://twitter.com/manuciaoY">on Twitter</a>.</p>
+                </div>
 
-                    <h2>The script</h2>
-                    <p>First of all, we are going to take part of the akamai url to set a breakpoint, easily recognizable by the developer tools from his sequence of alphanumeric characters separated by forward slashes.</p>
-                    <img class="align-center" src="img/akamai-url.png">
-
-                    <p>Then we are going to set a breakpoint in the script, and we are going to use the developer tools to debug the code.</p>
-                    <img class="align-center" src="img/breakpoint.png">
-                    <br/><br/>
-                    <p>After that, we are going to use the developer tools to debug the code, and we are going to use the console to print the value of the variables.</p>
             </div>
-        </article>
+        </section>
     </div>
 </div>
+<footer>
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-xs-10">
+                &copy; 2024 Manuciao
+            </div>
+            <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+        </div>
+    </div>
+</footer>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://eli.thegreenplace.net/theme/js/bootstrap.min.js"></script>
+
+<!--
+  Using goatcounter to count visitors. The count.js script is vendored in.
+-->
+<script data-goatcounter="https://stats.thegreenplace.net/count"
+        async src="https://eli.thegreenplace.net/theme/js/count.js"></script>
 </body>
 </html>
