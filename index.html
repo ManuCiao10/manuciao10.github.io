@@ -86,7 +86,7 @@
                 <p>First of all, we are going to take a part of the <a href="https://www.nike.com/DkzoV9/i7g8c/3YT10/aAs1/YGiYGDwJLS/blxfOQE/C3xRDy0j/Un4">Akamai URL</a> to set a breakpoint, easily recognizable by the developer tools for its sequence of alphanumeric characters separated by forward slashes.</p>
                 <img class="align-center" src="img/akamai-url.png" alt="">
 
-                <p>Then, we are going to set a breakpoint in the script, and as you can see in the image below, the variable <tt class="docutils literal"><span class="pre">bW</span></tt> is what we are looking for.</p>
+                <p>Then, we are going to set a breakpoint in the script and refresh the page, as you can see in the image below, the variable <tt class="docutils literal"><span class="pre">bW</span></tt> is what we are looking for.</p>
                 <img class="align-center" src="img/breakpoint.png" alt="">
 
                 <p>We are now going to the first initialization of <tt class="docutils literal"><span class="pre">bW</span></tt> and printing its value.
@@ -100,7 +100,40 @@
                 <img class="align-center" src="img/ah.png" alt="">
                 <p>- <tt class="docutils literal"><span class="pre">window.navigator.userAgent</span></tt> : Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 </p>
                 <p>- <tt class="docutils literal"><span class="pre">window.screen</span></tt> : {availWidth: 450, availHeight: 942, width: 450, height: 942, colorDepth: 30, …} </p>
+
+                <p>We can now compare the different arrays, delete the cookies, and refresh the page.</p>
                 <img class="align-center" src="img/compared.png " alt="">
+                <div class="highlight"><pre><span></span>["-100", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36,uaend,12147,20030107,en-GB,Gecko,4,0,0,0,420420,0,450,942,450,942,158,934,158,
+,cpen:0,i1:0,dm:0,cwen:0,non:1,opc:0,fc:0,sc:0,wrc:1,isc:0,vib:1,bat:1,x11:0,x12:1,8749,0.447407606223,854348807082,0,0,loc:", "-105", "0,0,0,0,1754,630,0;", "-108", "", "-101", "do_en,dm_en,t_en", "-110",
+"", "-117", "", "-109", "", "-102","0,0,0,0,1754,630,0;", "-111", "", "-114", "", "-103", "", "-106", "0,0", "-115", "1,32,32,0,0,0,0,2,0,1708697614164,-999999,18279,0,0,3046,0,0,10615,0,0,7CD948FD4491D35E693B78F302B28565~-1~/vgSV7OW7Uxm4k4+QiicO6KFZA==~-1~||-1||~-1,52290,-1,-1,
+30261693,PiZtE,49138,66,0,0,0,,,", "-112", "https://www.nike.com/it", "-119", "-1", "-122", "0,0,0,0,1,0,0", "-123", "", "-124", "", "-126", "", "-127", 8, "-128", ",,", "-131", ",,,", "-132", "", "-133", "", "-70", "-1", "-80", "94", "-90",
+"375888554|82690", "-116", 0 ]</pre></div>
+                <p>Detects various automated tools, such as <a href="https://selenium-python.readthedocs.io/">Selenium</a> and <a href="https://phantomjs.org/">PhantomJS</a>.</p>
+                <div class="highlight"><pre><span></span>cpen:0,i1:0,dm:0,cwen:0,non:1,opc:0,fc:0,sc:0,wrc:1,isc:0,vib:1,bat:1,x11:0,x12:1</pre></div>
+                <p>1. <tt class="docutils literal"><span class="pre">8749</span></tt>: User-Agent Sign
+                <pre><code class="language-go">func ab(t string) int {
+    var ret, v, l int
+    l = len(t)
+
+    for i := 0; i < l; i++ {
+        v = int(t[i])
+
+        if v < 128 {
+            ret += v
+        }
+    }
+
+    return ret
+}</code></pre>
+                <p>
+                <p>2. <tt class="docutils literal"><span class="pre">0.447407606223</span></tt>: Random math number </p>
+                <p>3. <tt class="docutils literal"><span class="pre">854348807082</span></tt>: Timestamp /2 </p>
+                <img class="align-center" src="img/Screenshot%202024-02-23%20at%2015.06.39.png" alt="">
+                <p>After analyzing how the array AH has been built, we can notice that a new value will be added to bW. In our case
+                    <tt class="docutils literal"><span class="pre">2,9B4f5,88X7,1488,2,9B4f5,88X7,1488,7a74G7m23Vrp0o5c94...==,9B4f5,88X7,1488,147815,9B4f5,88X7,1488</span></tt>
+                    <br>Right before the User-Agent.
+                </p>
+                <img class="align-center" src="img/Screenshot%202024-02-23%20at%2016.17.21.png" alt="">
             </div>
         </article>
     </div>
@@ -116,5 +149,7 @@
         </div>
     </div>
 </footer>
+
+
 </body>
 </html>
