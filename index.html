@@ -126,15 +126,21 @@
                     <br>Right before the User-Agent.
                 </p>
 
-                <img class="align-center" src="img/akamai/bW_enc.png" alt="">
-                <p>Akamai has begun shuffling the string using a seed and specific fixed values from the array <tt class="docutils literal"><span class="pre">gN</span></tt>.</p>
-                <p>
+                <p>The string is constructed joining the <tt class="docutils literal"><span class="pre">separator</span></tt> with the version tag and a key.
+                    The initial portion of the string is generated using the following function:</p>
+                <img class="align-center" src="img/akamai/rW.png" alt="">
+                <p>Instead, the final portion will be hardcoded for the moment as it is not necessary to generate it: <tt class="docutils literal"><span class="pre">AYAGBx/g0fqmeAQ+UA6Alw==</span></tt>.</p>
+                <p>Akamai now shuffles the string using a seed and specific fixed values from the array <tt class="docutils literal"><span class="pre">gN</span></tt>.</p>
                 <div class="highlight">
                     <pre><span></span><tt class="docutils literal"><span class="pre"></span></tt>[4095,300000,0,8,9,100000,10000,50,5,14,16,18,25,31,8888888,7777777,4,1,112,2,12,10,1000,100,0.7,0.95,0.98,0.9,0.8,0.1,0.4,0.07,0.025,255,0.22,4294967296,999999,3,17,22,23,3600000,65793,4294967295,4282663,65535,8388607,57,20,3000]</pre>
                 </div>
 
+                <img class="align-center" src="img/akamai/bW_enc.png" alt="">
+                <p class="image-caption">Example of the Shuffle function <tt class="docutils literal"><span class="pre">nW</span></tt></p>
+                <img class="align-center" src="img/akamai/enc.png" alt="">
+
                 <p>After analyzing the array <tt class="docutils literal"><span class="pre">gN</span></tt>, we can now create a function to replicate the shuffling.
-                In the image below, you can observe the array <tt class="docutils literal"><span class="pre">bW</span></tt> before and after the string shuffling.</p>
+                In the image above, you can observe the array <tt class="docutils literal"><span class="pre">bW</span></tt> before and after the string shuffling.</p>
 
                 <pre><code class="language-go">func shuffle(arr []string) []string {
     len_array := len(arr)
@@ -159,7 +165,7 @@
     }
     return arr
 }</code></pre>
-                <img class="align-center" src="img/akamai/enc.png" alt="">
+
                 <p>After the shuffling, the string is encrypted using a custom function.
                 Lopping through each character of the string, the ASCII decimal value of the character is passed as an index to the array <tt class="docutils literal"><span class="pre">GJ</span></tt>.
                     If the value is greater than or equal to 0, the character undergoes addition assignment with the seed modulo the length of the <tt class="docutils literal"><span class="pre">AJ</span></tt> array.
